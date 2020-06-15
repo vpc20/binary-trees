@@ -1,7 +1,7 @@
 from unittest import TestCase
 from binarytree import tree
 from random import randint
-from HeightOfATree import height
+from HeightOfATree import tree_height
 
 
 class Test(TestCase):
@@ -11,4 +11,4 @@ class Test(TestCase):
             t = tree(height=h)
             # print(t.height)
             # print(t)
-            self.assertEqual(t.height, height(t))
+            self.assertEqual(t.height, tree_height(t))
