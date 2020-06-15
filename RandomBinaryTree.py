@@ -23,7 +23,7 @@ def random_binary_tree():
             if r < len(vals):
                 vals[r] = None
 
-    while vals[-1] is None:  # remove trailing Nones
+    while len(vals) > 1 and vals[-1] is None:  # remove trailing Nones
         vals.pop()
     # print(vals)
 
