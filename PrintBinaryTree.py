@@ -7,6 +7,9 @@ from RandomBinaryTree import random_binary_tree
 
 
 def print_binary_tree(node):
+    if not node:
+        print('There is no tree')
+        return
     left_space = [48, 24, 12, 6, 3]
     space_bet_vals = [93, 45, 21, 9, 3]
     line_ctrs = [23, 11, 5, 2, 0]
@@ -104,9 +107,10 @@ def print_binary_tree(node):
 # t = binary_tree([1])
 # print_binary_tree(t)
 
-t, vals = random_binary_tree()
-print(vals)
-print_binary_tree(t)
+for _ in range(100000):
+    t, vals = random_binary_tree()
+    print(vals)
+    print_binary_tree(t)
 
 # t1 = binary_tree([5, None, 14, None, None, 4, 3, None, None, None, None, None, 12, 7])
 # t1 = binary_tree([5, None, 14, None, None, None, 3])
