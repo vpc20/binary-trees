@@ -82,50 +82,51 @@ def print_binary_tree(node):
     print('')
 
 
-# print(
-#     '0         1         2         3         4         5         6         7         8         9         10        11 '
-#     '       12        13')
-# print(
-#     '0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0'
-#     '....+....0....+....0..')
+if __name__ == '__main__':
+    # print(
+    #     '0         1         2         3         4         5         6         7         8         9         10        11 '
+    #     '       12        13')
+    # print(
+    #     '0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0....+....0'
+    #     '....+....0....+....0..')
 
-# t = binary_tree([8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15])
-# print_binary_tree(t)
+    # t = binary_tree([8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15])
+    # print_binary_tree(t)
 
-# t = binary_tree(list(range(1, 32)))
-# print_binary_tree(t)
-#
-# t = binary_tree(list(range(1, 16)))
-# print_binary_tree(t)
-#
-# t = binary_tree(list(range(1, 8)))
-# print_binary_tree(t)
-#
-# t = binary_tree(list(range(1, 4)))
-# print_binary_tree(t)
-#
-# t = binary_tree([1])
-# print_binary_tree(t)
+    # t = binary_tree(list(range(1, 32)))
+    # print_binary_tree(t)
+    #
+    # t = binary_tree(list(range(1, 16)))
+    # print_binary_tree(t)
+    #
+    # t = binary_tree(list(range(1, 8)))
+    # print_binary_tree(t)
+    #
+    # t = binary_tree(list(range(1, 4)))
+    # print_binary_tree(t)
+    #
+    # t = binary_tree([1])
+    # print_binary_tree(t)
 
-for _ in range(100000):
-    t, vals = random_binary_tree()
-    print(vals)
-    print_binary_tree(t)
+    for _ in range(1000):
+        t, vals = random_binary_tree()
+        print(vals)
+        print_binary_tree(t)
 
-# t1 = binary_tree([5, None, 14, None, None, 4, 3, None, None, None, None, None, 12, 7])
-# t1 = binary_tree([5, None, 14, None, None, None, 3])
-# print_binary_tree(t1)
+    # t1 = binary_tree([5, None, 14, None, None, 4, 3, None, None, None, None, None, 12, 7])
+    # t1 = binary_tree([5, None, 14, None, None, None, 3])
+    # print_binary_tree(t1)
 
-# t2 = build([5, None, 14, None, None, 4, 3, None, None, None, None, None, 12, 7])
-# print(t2)
-# 5_____
-#       \
-#     ___14__
-#    /       \
-#   4         3
-#    \       /
-#     12    7
+    # t2 = build([5, None, 14, None, None, 4, 3, None, None, None, None, None, 12, 7])
+    # print(t2)
+    # 5_____
+    #       \
+    #     ___14__
+    #    /       \
+    #   4         3
+    #    \       /
+    #     12    7
 
 
-# t2 = build([8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15])
-# print(t2)
+    # t2 = build([8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15])
+    # print(t2)
