@@ -1,4 +1,4 @@
-from PrintBinaryTree import print_binary_tree
+from BinaryTrees import print_binary_tree
 
 
 class TreeNode:
@@ -7,6 +7,10 @@ class TreeNode:
         self.left = left
         self.right = right
         self.parent = parent
+
+    def __str__(self):
+        print_binary_tree(self)
+        return ''
 
     def __repr__(self):
         return 'Node(' + str(self.val) + ')'
@@ -67,7 +71,7 @@ def tree_maximum(node):
 
 
 bst = binary_search_tree(15)
-print_binary_tree(bst)
+print(bst)
 print(tree_minimum(bst))
 print(tree_maximum(bst))
 print(tree_search(bst, 7))
