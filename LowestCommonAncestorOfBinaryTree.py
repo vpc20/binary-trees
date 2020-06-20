@@ -66,59 +66,36 @@ def lowest_common_ancestor(root, p, q):
 
     preds = {}
     dfs(root)
-    # for k, v in preds.items():
-    #     print(f'({k.val}: {v.val})')
 
-    curr = p
-    pset = {curr}
-    while curr != root:
-        pset.add(preds[curr])
-        curr = preds[curr]
-    # for e in pset:
-    #     print(e.val, end=' ')
-    # print('')
+    pset = {p}
+    while p != root:
+        pset.add(preds[p])
+        p = preds[p]
 
     if q in pset:
         return q
-    curr = q
-    while curr != root:
-        if preds[curr] in pset:
-            return preds[curr]
-        curr = preds[curr]
+    while q != root:
+        if preds[q] in pset:
+            return preds[q]
+        q = preds[q]
 
 
-# class Solution:
+# def lowestCommonAncestor(root, p, q):
+#     def recurse_tree(curr):
+#         nonlocal ans
+#         if not curr:
+#             return False
+#         left = recurse_tree(curr.left)
+#         right = recurse_tree(curr.right)
 #
-#     def __init__(self):
-#         # Variable to store LCA node.
-#         self.ans = None
+#         mid = curr == p or curr == q
+#         if mid + left + right >= 2:
+#             ans = curr
+#         return mid or left or right
 #
-#     def lowestCommonAncestor(self, root, p, q):
-#         def recurse_tree(current_node):
-#
-#             # If reached the end of a branch, return False.
-#             if not current_node:
-#                 return False
-#
-#             # Left Recursion
-#             left = recurse_tree(current_node.left)
-#
-#             # Right Recursion
-#             right = recurse_tree(current_node.right)
-#
-#             # If the current node is one of p or q
-#             mid = current_node == p or current_node == q
-#
-#             # If any two of the three flags left, right or mid become True.
-#             if mid + left + right >= 2:
-#                 self.ans = current_node
-#
-#             # Return True if either of the three bool values is True.
-#             return mid or left or right
-#
-#         # Traverse the tree
-#         recurse_tree(root)
-#         return self.ans
+#     ans = None
+#     recurse_tree(root)
+#     return ans
 
 
 t = binary_tree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
