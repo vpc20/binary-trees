@@ -1,7 +1,7 @@
 from unittest import TestCase
 from binarytree import tree
 from random import randint
-from HeightOfATree import tree_height
+from HeightOfATree import tree_height, tree_height_iterative
 
 
 class Test(TestCase):
@@ -12,3 +12,4 @@ class Test(TestCase):
             # print(t.height)
             # print(t)
             self.assertEqual(t.height, tree_height(t))
+            self.assertEqual(t.height, tree_height_iterative(t))
