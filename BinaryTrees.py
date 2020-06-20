@@ -13,7 +13,7 @@ class TreeNode:
         return ''
 
     def __repr__(self):
-        return 'TreeNode(' + str(self.val) + ')'
+        return f'TreeNode({self.val})'
 
 
 def binary_tree(vals):
@@ -405,8 +405,6 @@ def print_binary_tree(node):
             print(f'{" " * line_ctrs[lnctr_idx] * 2}', end='')
         print('')
         lnctr_idx += 1
-
-    print('')
 
 
 def random_binary_tree():
