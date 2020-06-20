@@ -38,6 +38,7 @@ def binary_tree(vals):
     return root
 
 
+# noinspection PyTypeChecker
 def binary_tree_values(node):
     height = tree_height(node)
     h = 0
@@ -332,6 +333,7 @@ def tree_height(node):
     return max(left, right)
 
 
+# noinspection PyTypeChecker
 def print_binary_tree(node):
     if not node:
         print('There is no tree')
