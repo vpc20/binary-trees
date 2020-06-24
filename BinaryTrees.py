@@ -1,4 +1,5 @@
 from collections import deque
+from itertools import chain
 from random import shuffle, randint
 
 
@@ -293,6 +294,27 @@ def level_order_array(node):
     return arr
 
 
+# def level_order_array_recursive(node):
+#     """
+#     Visit every node on a level before going to a lower level.
+#
+#     :param node: root of the binary tree
+#     :return: level-order list of node values
+#     """
+#
+#     def print_level(node, level):
+#         if node:  # preorder walk, but print only the last level
+#             if level == 0:
+#                 arr.append(node.val)
+#                 return
+#             print_level(node.left, level - 1)
+#             print_level(node.right, level - 1)
+#
+#     arr = []
+#     for i in range(tree_height(node) + 1):
+#         print_level(node, i)
+#     return arr
+
 def level_order_array_recursive(node):
     """
     Visit every node on a level before going to a lower level.
@@ -301,18 +323,19 @@ def level_order_array_recursive(node):
     :return: level-order list of node values
     """
 
-    def print_level(node, level):
-        if node:  # preorder walk, but print only the last level
-            if level == 0:
-                arr.append(node.val)
-                return
-            print_level(node.left, level - 1)
-            print_level(node.right, level - 1)
+    def dfs(node, lvl):
+        if lvl == len(levels):
+            levels.append([node.val])
+        else:
+            levels[lvl].append(node.val)
+        if node.left:
+            dfs(node.left, lvl + 1)
+        if node.right:
+            dfs(node.right, lvl + 1)
 
-    arr = []
-    for i in range(tree_height(node) + 1):
-        print_level(node, i)
-    return arr
+    levels = []
+    dfs(node, 0)
+    return list(chain.from_iterable(levels))
 
 
 def tree_height(node):
@@ -443,3 +466,4 @@ if __name__ == '__main__':
     bt = binary_tree([5, 4, 6, None, 0, 2, 3])
     print(bt)
     print(binary_tree_values(bt))
+    print(level_order_array_recursive(bt))
