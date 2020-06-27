@@ -39,35 +39,52 @@ def binary_tree(vals):
     return root
 
 
-# noinspection PyTypeChecker
 def binary_tree_values(node):
-    height = tree_height(node)
-    h = 0
     vals = []
     q = deque([node])
-    while h <= height:
-        for _ in range(len(q)):
+    while q:
+        for _ in range(len(q)):  # process each level
             node = q.popleft()
-            if node is not None:
-                vals.append(node.val)
-                if node.left is not None:
-                    q.append(node.left)
-                else:
-                    q.append(None)
-                if node.right is not None:
-                    q.append(node.right)
-                else:
-                    q.append(None)
-            else:
-                vals.append(None)
-                q.append(None)
-                q.append(None)
-        h += 1
+            vals.append(node.val if node is not None else None)
+            q.append(node.left if node is not None else None)
+            q.append(node.right if node is not None else None)
+        if set(q) == {None}:  # q contains all Nones
+            break
 
     while len(vals) > 1 and vals[-1] is None:  # remove trailing Nones
         vals.pop()
 
     return vals
+
+
+# def binary_tree_values(node):
+#     height = tree_height(node)
+#     h = 0
+#     vals = []
+#     q = deque([node])
+#     while h <= height:
+#         for _ in range(len(q)):
+#             node = q.popleft()
+#             if node is not None:
+#                 vals.append(node.val)
+#                 if node.left is not None:
+#                     q.append(node.left)
+#                 else:
+#                     q.append(None)
+#                 if node.right is not None:
+#                     q.append(node.right)
+#                 else:
+#                     q.append(None)
+#             else:
+#                 vals.append(None)
+#                 q.append(None)
+#                 q.append(None)
+#         h += 1
+#
+#     while len(vals) > 1 and vals[-1] is None:  # remove trailing Nones
+#         vals.pop()
+#
+#     return vals
 
 
 def print_preorder(root):
@@ -466,4 +483,4 @@ if __name__ == '__main__':
     bt = binary_tree([5, 4, 6, None, 0, 2, 3])
     print(bt)
     print(binary_tree_values(bt))
-    print(level_order_array_recursive(bt))
+    # print(level_order_array_recursive(bt))

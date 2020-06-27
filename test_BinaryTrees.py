@@ -21,7 +21,7 @@ class Test(TestCase):
             self.assertEqual([e.val for e in t.levelorder], level_order_array_recursive(bt))
 
     def test_binary_tree_values(self):
-        for _ in range(10000):
+        for _ in range(20000):
             t = tree()
             # print(t)
             bt = binary_tree(t.values)
