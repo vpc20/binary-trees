@@ -23,7 +23,7 @@ def num_trees(n):
         return 1
     res = 0
     for i in range(n):
-        res += num_trees(i) * num_trees(n - i - 1)
+        res += num_trees(i) * num_trees(n - 1 - i)
     return res
 
 
@@ -31,12 +31,12 @@ def num_trees_dyna(n):
     dp = [1, 1] + [0] * (n - 1)
     for i in range(2, n + 1):
         for j in range(i):
-            dp[i] += dp[j] * dp[i - j - 1]
+            dp[i] += dp[j] * dp[i - 1 - j]
             # print(f'dp[{i}] += dp[{j}] * dp[{i - j - 1}]')
             # print(f'{dp[i]} += {dp[j]} * {dp[i - j - 1]}')
     return dp[-1]
 
 
-# 1, 2, 5, 14, 42, 132, 429...
+# 1, 1, 2, 5, 14, 42, 132, 429...
 print(num_trees(3))
 print(num_trees_dyna(4))
