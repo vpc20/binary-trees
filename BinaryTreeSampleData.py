@@ -2,7 +2,7 @@ from itertools import combinations
 
 from BinaryTrees import binary_tree
 
-arr = [4, 2, 6, 1, 3, 5, 7]
+arr = [4, 2, 6, 1, 3, 5, 7]  # level-order
 idxs = list(range(1, len(arr)))
 print(idxs)
 tree_arr = []
@@ -10,7 +10,7 @@ tree_arr = []
 for r in range(1, len(arr)):
     for comb in combinations(idxs, r):
         arr_copy = arr.copy()
-        for idx in comb:
+        for idx in comb:  # comb contains indices which will be replaced with None
             arr_copy[idx] = None
         for i in range(len(arr_copy)):
             if arr_copy[i] is None:  # if parent is None children should also be None
