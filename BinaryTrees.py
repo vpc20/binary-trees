@@ -40,6 +40,12 @@ def binary_tree(vals):
 
 
 def binary_tree_values(node):
+    """
+     Return list of binary tree values in level-order sequence
+
+     :param node: root of binary tree
+     :return: list of values in level-order sequence
+     """
     vals = []
     q = deque([node])
     while q:
@@ -55,6 +61,30 @@ def binary_tree_values(node):
         vals.pop()
 
     return vals
+
+
+def binary_tree_nodes(node):
+    """
+     Return list of binary tree nodes in level-order sequence
+
+     :param node: root of binary tree
+     :return: list of nodes in level-order sequence
+     """
+    nodes = []
+    q = deque([node])
+    while q:
+        for _ in range(len(q)):  # process each level
+            node = q.popleft()
+            nodes.append(node if node is not None else None)
+            q.append(node.left if node is not None else None)
+            q.append(node.right if node is not None else None)
+        if set(q) == {None}:  # q contains all Nones
+            break
+
+    while len(nodes) > 1 and nodes[-1] is None:  # remove trailing Nones
+        nodes.pop()
+
+    return nodes
 
 
 # def binary_tree_values(node):
@@ -483,4 +513,5 @@ if __name__ == '__main__':
     bt = binary_tree([5, 4, 6, None, 0, 2, 3])
     print(bt)
     print(binary_tree_values(bt))
+    print(binary_tree_nodes(bt))
     # print(level_order_array_recursive(bt))
