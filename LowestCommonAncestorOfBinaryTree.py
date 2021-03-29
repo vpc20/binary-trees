@@ -19,7 +19,7 @@
 # Note:
 # All of the nodes ' values will be unique.
 # p and q are different and both values will exist in the binary tree.
-from BinaryTrees import binary_tree
+from BinaryTrees import binary_tree, binary_tree_nodes
 
 
 # def lowestCommonAncestor(self, root, p, q):
@@ -97,8 +97,19 @@ def lowest_common_ancestor(root, p, q):
 #     recurse_tree(root)
 #     return ans
 
+def lca(root, p, q):
+    if p.val <= root.val <= q.val or q.val <= root.val <= p.val:
+        return root
+    elif root.val > p.val and root.val > q.val:
+        return lca(root.left, p, q)
+    elif root.val < p.val and root.val < q.val:
+        return lca(root.right, p, q)
 
-t = binary_tree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
+
+# t = binary_tree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
+t = binary_tree([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5])
 print(t)
-print(repr(lowest_common_ancestor(t, t.left, t.right)))
-
+nodes = binary_tree_nodes(t)
+print(nodes)
+print(repr(lowest_common_ancestor(t, nodes[1], nodes[4])))
+print(repr(lca(t, nodes[1], nodes[4])))

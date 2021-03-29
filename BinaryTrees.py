@@ -16,6 +16,18 @@ class TreeNode:
     def __repr__(self):
         return f'TreeNode({self.val})'
 
+    def __len__(self):
+        ctr = 0
+        q = deque([self])
+        while q:
+            node = q.popleft()
+            ctr += 1
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+        return ctr
+
 
 def binary_tree(vals):
     """
@@ -514,4 +526,5 @@ if __name__ == '__main__':
     print(bt)
     print(binary_tree_values(bt))
     print(binary_tree_nodes(bt))
+    print(len(bt))
     # print(level_order_array_recursive(bt))
