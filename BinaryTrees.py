@@ -212,6 +212,18 @@ def print_graphviz(node):
     print('}')
 
 
+# def preorder_array(root):
+#     def preorder(node):
+#         arr.append(node.val)
+#         if node.left:
+#             preorder(node.left)
+#         if node.right:
+#             preorder(node.right)
+#
+#     arr = []
+#     preorder(root)
+#     return arr
+
 def preorder_array(root):
     """
     Visit the root before the values in left and right subtree.
@@ -219,16 +231,11 @@ def preorder_array(root):
     :param root: root of the binary tree
     :return: preorder list of node values
     """
-
-    def preorder(node):
-        arr.append(node.val)
-        if node.left:
-            preorder(node.left)
-        if node.right:
-            preorder(node.right)
-
-    arr = []
-    preorder(root)
+    if root is None:
+        return []
+    arr = [root.val]
+    arr += preorder_array(root.left)
+    arr += preorder_array(root.right)
     return arr
 
 
@@ -252,6 +259,19 @@ def preorder_array_iterative(node):
     return arr
 
 
+# def inorder_array(root):
+#     def inorder(node):
+#         if node.left:
+#             inorder(node.left)
+#         arr.append(node.val)
+#         if node.right:
+#             inorder(node.right)
+#
+#     arr = []
+#     inorder(root)
+#     return arr
+
+
 def inorder_array(root):
     """
     Visit the root of a subtree between visiting the values in its left subtree and visiting those in its right
@@ -260,16 +280,11 @@ def inorder_array(root):
     :param root: root of the binary tree
     :return: inorder list of node values
     """
-
-    def inorder(node):
-        if node.left:
-            inorder(node.left)
-        arr.append(node.val)
-        if node.right:
-            inorder(node.right)
-
-    arr = []
-    inorder(root)
+    if root is None:
+        return []
+    arr = inorder_array(root.left)
+    arr += [root.val]
+    arr += inorder_array(root.right)
     return arr
 
 
@@ -294,6 +309,19 @@ def inorder_array_iterative(node):
     return arr
 
 
+# def postorder_array(root):
+#     def postorder(node):
+#         if node.left:
+#             postorder(node.left)
+#         if node.right:
+#             postorder(node.right)
+#         arr.append(node.val)
+#
+#     arr = []
+#     postorder(root)
+#     return arr
+
+
 def postorder_array(root):
     """
     Visit the root after the values in left and right subtree.
@@ -302,15 +330,11 @@ def postorder_array(root):
     :return: postorder list of node values
     """
 
-    def postorder(node):
-        if node.left:
-            postorder(node.left)
-        if node.right:
-            postorder(node.right)
-        arr.append(node.val)
-
-    arr = []
-    postorder(root)
+    if root is None:
+        return []
+    arr = postorder_array(root.left)
+    arr += postorder_array(root.right)
+    arr += [root.val]
     return arr
 
 
@@ -522,9 +546,17 @@ if __name__ == '__main__':
     # print(binary_tree_values(t))
     # bt = binary_tree([1, 2, 3])
     # print(binary_tree_values(bt))
-    bt = binary_tree([5, 4, 6, None, 0, 2, 3])
+
+    # bt = binary_tree([5, 4, 6, None, 0, 2, 3])
+    # print(bt)
+    # print(binary_tree_values(bt))
+    # print(binary_tree_nodes(bt))
+    # print(len(bt))
+
+    bt = binary_tree([4, 2, 6, 1, 3, 5, 7])
     print(bt)
-    print(binary_tree_values(bt))
-    print(binary_tree_nodes(bt))
-    print(len(bt))
-    # print(level_order_array_recursive(bt))
+    print(postorder_array(bt))
+    print(postorder_array_iterative(bt))
+    # print(binary_tree_values(bt))
+    # print(binary_tree_nodes(bt))
+    # print(len(bt))

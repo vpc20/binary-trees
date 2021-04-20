@@ -7,7 +7,7 @@ idxs = list(range(1, len(arr)))
 print(idxs)
 tree_arr = []
 
-for r in range(1, len(arr)):
+for r in range(len(arr)):
     for comb in combinations(idxs, r):
         arr_copy = arr.copy()
         for idx in comb:  # comb contains indices which will be replaced with None
@@ -23,6 +23,8 @@ for r in range(1, len(arr)):
         if arr_copy not in tree_arr:  # remove duplicates
             tree_arr.append(arr_copy)
 
+print(tree_arr)
+# replace 0 instead of None in sort key since None values cannot be sorted
 tree_arr.sort(key=lambda e: [item if item is not None else 0 for item in e])
 
 for arr in tree_arr:
