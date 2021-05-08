@@ -1,4 +1,4 @@
-from itertools import combinations
+from itertools import combinations, count
 
 from BinaryTrees import binary_tree
 
@@ -62,7 +62,73 @@ def gen_subtrees1(arr):
     return tree_arr
 
 
+def gen_subtrees2(arr):
+    def backtrack(arrx, r):
+        if r == 0:
+            for e in prev:
+                curr.append(e + arrx)
+                print(e + arrx)
+            return
+
+        for i in range(len(arrx)):
+            tmp = arrx[i]
+            arrx[i] = None
+            backtrack(arrx, r - 1)
+            arrx[i] = tmp
+
+    lo = 0
+    hi = 0
+    lvls = []
+    curr = []
+    prev = [[arr[0]]]
+    result = [[arr[0]]]
+
+    for i in count():  # separate each level
+        l = 2 ** i  # length of each level
+        hi = lo + l
+        sl = arr[lo:hi]
+        if sl:
+            lvls.append(sl)
+            lo = hi
+        else:
+            break
+
+    for i in range(1, len(lvls)):
+        curr = []
+        for r in range(len(lvls[i])):
+            backtrack(lvls[i].copy(), r)
+        result += curr
+        prev = curr.copy()
+
+    return result
+
+    # queue = deque([arr[0]])
+    # lvls = []
+    #
+    # while queue:
+    #     lvls.append([])
+    #     count = len(queue)
+    #     for _ in range(count):
+    #         node = queue.popleft()
+    #         lvls[-1].append(node.val)
+    #         if node.left:
+    #             queue.append(node.left)
+    #         if node.right:
+    #             queue.append(node.right)
+    # return lvls
+
+
 arr = [4, 2, 6, 1, 3, 5, 7]  # level-order
-for vals in gen_subtrees(arr):
+# for vals in gen_subtrees(arr):
+#     t = binary_tree(vals)
+#     print(t)
+
+for vals in gen_subtrees2(arr):
     t = binary_tree(vals)
     print(t)
+
+# print(len(gen_subtrees2(arr)))
+# print(gen_subtrees2([1, 2, 3, 4, 5]))
+# print(gen_subtrees2([1, 2, 3, 4]))
+# print(gen_subtrees2([1, 2, 3, 4, 5]))
+# print(gen_subtrees2([1, 2, 3, 4, 5, 6, 7]))
