@@ -70,8 +70,9 @@ def tree_maximum(node):
     return node
 
 
-bst = binary_search_tree(15)
-print(bst)
-print(tree_minimum(bst))
-print(tree_maximum(bst))
-print(tree_search(bst, 7))
+if __name__ == '__main__':
+    bst = binary_search_tree(15)
+    print(bst)
+    print(tree_minimum(bst))
+    print(tree_maximum(bst))
+    print(tree_search(bst, 7))
