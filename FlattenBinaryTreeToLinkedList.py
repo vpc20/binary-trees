@@ -24,6 +24,34 @@
 from BinaryTrees import binary_tree, TreeNode
 
 
+# def flatten(root):
+#     """
+#     Do not return anything, modify root in-place instead.
+#     """
+#
+#     def preorder(node):
+#         nonlocal head, curr
+#         if node is None:
+#             return
+#         newnode = TreeNode(node.val)
+#         curr.right = newnode
+#         curr = newnode
+#
+#         preorder(node.left)
+#         preorder(node.right)
+#
+#     if root is None:
+#         return None
+#
+#     head = TreeNode()
+#     curr = head
+#     preorder(root)
+#
+#     root.right = head.right.right
+#     root.left = None
+
+
+# no extra space required
 def flatten(root):
     """
     Do not return anything, modify root in-place instead.
@@ -50,5 +78,6 @@ def flatten(root):
 
 
 t = binary_tree([1, 2, 5, 3, 4, None, 6])
+t = binary_tree([1, 2, 5, 3, 4])
 print(t)
-print(flatten(t))  # print not working of level 6
+print(flatten(t))  # print not working on level 6
