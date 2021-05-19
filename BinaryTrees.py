@@ -447,6 +447,9 @@ def print_binary_tree(node):
     left_space = [48, 24, 12, 6, 3]
     space_bet_vals = [93, 45, 21, 9, 3]
     line_ctrs = [23, 11, 5, 2, 0]
+    # left_space =     [384, 192,  96, 48, 24, 12, 6, 3]
+    # space_bet_vals = [765, 381, 189, 93, 45, 21, 9, 3]
+    # line_ctrs =      [191,  95,  47, 23, 11,  5, 2, 0]
 
     height = tree_height(node)
     lvl = 0
