@@ -28,13 +28,13 @@ class TreeNode:
 
 def level_order(root):
     def dfs(curr, lvl):
-        if lvl == len(result):
-            result.append([curr.val])
-        else:
+        if lvl < len(result):
             result[lvl].append(curr.val)
-        if curr.left:
+        else:
+            result.append([curr.val])
+        if curr.left is not None:
             dfs(curr.left, lvl + 1)
-        if curr.right:
+        if curr.right is not None:
             dfs(curr.right, lvl + 1)
 
     if root is None:
